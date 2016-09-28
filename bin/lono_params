@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+$:.unshift(File.expand_path('../../lib', __FILE__))
+require 'lono_params'
+require 'lono_params/cli'
+
+LonoParams::CLI.start(ARGV)
