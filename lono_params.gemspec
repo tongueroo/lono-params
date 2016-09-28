@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'lono_params/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "lono_params"
+  spec.name          = "lono-params"
   spec.version       = LonoParams::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
