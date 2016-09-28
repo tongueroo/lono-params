@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = LonoParams::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tongueroo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Tool to generate a CloudFormation parameters json formatted file}
+  spec.summary       = %q{Tool to generate a CloudFormation parameters json formatted file}
+  spec.homepage      = "https://github.com/tongueroo/lono-params"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

@@ -7,13 +7,13 @@ require 'spec_helper'
 #   $ rake clean:vcr ; time rake
 describe LonoParams::CLI do
   before(:all) do
-    @args = "--from Tung"
+    @args = "--project-root spec/fixtures/my_project"
   end
 
-  describe "lono_params" do
+  describe "lono-params" do
     it "should hello world" do
-      out = execute("bin/lono_params hello world #{@args}")
-      expect(out).to include("from: Tung\nHello world")
+      out = execute("bin/lono-params generate my-stack #{@args}")
+      expect(out).to include("Params file generated for my-stack")
     end
   end
 end
