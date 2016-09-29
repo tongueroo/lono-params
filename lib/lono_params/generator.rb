@@ -12,6 +12,9 @@ module LonoParams
     end
 
     def generate
+      # useful option for lono-cfn
+      return if @options[:allow_blank] && !File.exist?(@source_path)
+
       if File.exist?(@source_path)
         contents = IO.read(@source_path)
         data = convert_to_cfn_format(contents)
