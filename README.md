@@ -1,6 +1,30 @@
 # LonoParams
 
-Tool to generate a CloudFormation params json formatted file
+Tool to generate a CloudFormation params json formatted file from a simplier env like file.
+
+Given:
+
+```
+Param1=1
+Param2=1
+```
+
+This is produced:
+
+```json
+[
+  {
+    "ParameterKey": "Param1",
+    "ParameterValue": "1",
+    "UsePreviousValue": true
+  },
+  {
+    "ParameterKey": "Param2",
+    "ParameterValue": "1",
+    "UsePreviousValue": true
+  }
+]
+```
 
 ## Installation
 
