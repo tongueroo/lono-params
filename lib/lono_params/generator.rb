@@ -29,6 +29,9 @@ module LonoParams
 
     # useful for when calling CloudFormation via the aws-sdk gem
     def params
+      # useful option for lono-cfn
+      return {} if @options[:allow_blank] && !File.exist?(@source_path)
+
       contents = IO.read(@source_path)
       convert_to_cfn_format(contents, :underscore)
     end
