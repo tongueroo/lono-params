@@ -11,7 +11,7 @@ describe LonoParams::CLI do
   end
 
   describe "lono-params" do
-    it "should hello world" do
+    it "should generate params" do
       out = execute("bin/lono-params generate my-stack #{@args}")
       expect(out).to include("Params file generated for my-stack")
     end

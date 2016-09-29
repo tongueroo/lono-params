@@ -1,6 +1,6 @@
 # LonoParams
 
-Tool to generate a CloudFormation parameters json formatted file
+Tool to generate a CloudFormation params json formatted file
 
 ## Installation
 
@@ -18,10 +18,10 @@ Or install it yourself as:
 
 ## Usage
 
-Create a directory under your project folder called `parameters`.  Then given, a file with parameters in a simple list format:
+Create a directory under your project folder called `params`.  Then given, a file with params in a simple list format:
 
 ```
-$ cat parameters/my-stack.txt 
+$ cat params/my-stack.txt 
 Param1=1
 Param2=1
 $ 
@@ -31,11 +31,11 @@ Generate the CloudFormation json file that can be used with the `aws cloudformat
 
 ```
 $ lono-params generate my-stack
-Params file generated for my-stack at ./parameters/my-stack.json
+Params file generated for my-stack at ./params/my-stack.json
 $ 
 ```
 
-This is what the `output/parameters/my-stack.json` file looks like:
+This is what the `output/params/my-stack.json` file looks like:
 
 ```json
 [
@@ -84,11 +84,11 @@ Options:
 Description:
   Example:
 
-  To generate a CloudFormation json file from parameters/my-stack.txt
+  To generate a CloudFormation json file from params/my-stack.txt
 
   $ lono-params generate my-stack
 
-  This will output a CloudFormation json file in output/parameters/my-stack.json
+  This will output a CloudFormation json file in output/params/my-stack.json
 $ 
 </pre>
 

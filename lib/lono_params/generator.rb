@@ -1,5 +1,6 @@
 require "json"
 require "fileutils"
+require 'plissken' # Hash#to_snake_keys
 
 module LonoParams
   class Generator
@@ -7,20 +8,26 @@ module LonoParams
       @name = name
       @options = options
       @project_root = options[:project_root] || '.'
+      @source_path = options[:path] || "#{@project_root}/params/#{@name}.txt"
     end
 
     def generate
-      path = "#{@project_root}/parameters/#{@name}.txt"
-      if File.exist?(path)
-        contents = IO.read(path)
-        lines = parse_contents(contents)
-        json = convert_to_cfn_format(lines)
+      if File.exist?(@source_path)
+        contents = IO.read(@source_path)
+        data = convert_to_cfn_format(contents)
+        json = JSON.pretty_generate(data)
         write_output(json)
         puts "Params file generated for #{@name} at #{output_path}"
       else
-        puts "#{path} could not be found?  Are you sure it exist?"
+        puts "#{@source_path} could not be found?  Are you sure it exist?"
         exit 1
       end
+    end
+
+    # useful for when calling CloudFormation via the aws-sdk gem
+    def params
+      contents = IO.read(@source_path)
+      convert_to_cfn_format(contents, :underscore)
     end
 
     def parse_contents(contents)
@@ -36,7 +43,8 @@ module LonoParams
       lines
     end
 
-    def convert_to_cfn_format(lines)
+    def convert_to_cfn_format(contents, casing=:camel)
+      lines = parse_contents(contents)
       params = []
       lines.each do |line|
         key,value = line.strip.split("=").map {|x| x.strip}
@@ -45,13 +53,14 @@ module LonoParams
           "ParameterValue": value,
           "UsePreviousValue": @options[:use_previous_value]
         }
+        param = param.to_snake_keys if casing == :underscore
         params << param
       end
-      JSON.pretty_generate(params)
+      params
     end
 
     def output_path
-      path = "#{@project_root}/output/parameters/#{@name}.json"
+      path = "#{@project_root}/output/params/#{@name}.json"
     end
 
     def write_output(json)
@@ -59,5 +68,6 @@ module LonoParams
       FileUtils.mkdir_p(dir) unless File.exist?(dir)
       IO.write(output_path, json)
     end
+
   end
 end

@@ -6,7 +6,7 @@ CodeClimate::TestReporter.start
 require "pp"
  
 root = File.expand_path('../../', __FILE__)
-require "#{root}/lib/lono_params"
+require "#{root}/lib/lono-params"
 
 module Helpers
   def execute(cmd)

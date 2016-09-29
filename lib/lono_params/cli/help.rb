@@ -6,11 +6,11 @@ module LonoParams
 <<-EOL
 Example:
 
-To generate a CloudFormation json file from parameters/my-stack.txt
+To generate a CloudFormation json file from params/my-stack.txt
 
 $ lono-params generate my-stack
 
-This will output a CloudFormation json file in output/parameters/my-stack.json
+This will output a CloudFormation json file in output/params/my-stack.json
 EOL
         end
       end
