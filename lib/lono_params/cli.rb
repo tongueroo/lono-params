@@ -11,7 +11,6 @@ module LonoParams
     desc "generate NAME", "generate parameter json file for NAME"
     long_desc Help.generate
     option :path, desc: "Path of the source params txt file.  Use this to override the params/NAME.txt convention"
-    option :use_previous_value, type: :boolean, default: true
     def generate(name)
       Generator.new(name, options).generate
     end

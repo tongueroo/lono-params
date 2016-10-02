@@ -13,7 +13,7 @@ module LonoParams
 
     def generate
       # useful option for lono-cfn
-      return if @options[:allow_blank] && !File.exist?(@source_path)
+      return if @options[:allow_no_file] && !File.exist?(@source_path)
 
       if File.exist?(@source_path)
         contents = IO.read(@source_path)
@@ -30,7 +30,7 @@ module LonoParams
     # useful for when calling CloudFormation via the aws-sdk gem
     def params
       # useful option for lono-cfn
-      return {} if @options[:allow_blank] && !File.exist?(@source_path)
+      return {} if @options[:allow_no_file] && !File.exist?(@source_path)
 
       contents = IO.read(@source_path)
       convert_to_cfn_format(contents, :underscore)
@@ -38,14 +38,12 @@ module LonoParams
 
     def parse_contents(contents)
       lines = contents.split("\n")
+      # remove comment at the end of the line
+      lines.map! { |l| l.sub(/#.*/,'').strip }
       # filter out commented lines
       lines = lines.reject { |l| l =~ /(^|\s)#/i }
       # filter out empty lines
       lines = lines.reject { |l| l.strip.empty? }
-
-      # looked into trying to remove the commnet at the end of the line but it looks like the reliably way to do that by breaking the line into a syntax tree?
-      # http://stackoverflow.com/questions/5865371/ruby-regex-for-finding-comments
-      # http://stackoverflow.com/questions/7330171/how-to-match-code-comment-with-regex-in-ruby
       lines
     end
 
@@ -54,11 +52,17 @@ module LonoParams
       params = []
       lines.each do |line|
         key,value = line.strip.split("=").map {|x| x.strip}
-        param = {
-          "ParameterKey": key,
-          "ParameterValue": value,
-          "UsePreviousValue": @options[:use_previous_value]
-        }
+        param = if value == "use_previous_value"
+                  {
+                    ParameterKey: key,
+                    UsePreviousValue: true
+                  }
+                else
+                  {
+                    ParameterKey: key,
+                    ParameterValue: value
+                  }
+                end
         param = param.to_snake_keys if casing == :underscore
         params << param
       end

@@ -21,10 +21,12 @@ Or install it yourself as:
 Create a directory under your project folder called `params`.  Then given, a file with params in a simple list format:
 
 ```
-$ cat params/my-stack.txt 
+$ cat params/my-stack.txt
+# comments are fine
 Param1=1
-Param2=1
-$ 
+Param2=2 # comments can go after the line too
+Param2=use_previous_value # treated specially
+$
 ```
 
 Generate the CloudFormation json file that can be used with the `aws cloudformation create-stack` command.
@@ -32,7 +34,7 @@ Generate the CloudFormation json file that can be used with the `aws cloudformat
 ```
 $ lono-params generate my-stack
 Params file generated for my-stack at ./params/my-stack.json
-$ 
+$
 ```
 
 This is what the `output/params/my-stack.json` file looks like:
@@ -41,12 +43,14 @@ This is what the `output/params/my-stack.json` file looks like:
 [
   {
     "ParameterKey": "Param1",
-    "ParameterValue": "1",
-    "UsePreviousValue": true
+    "ParameterValue": "1"
   },
   {
     "ParameterKey": "Param2",
-    "ParameterValue": "1",
+    "ParameterValue": "2"
+  },
+  {
+    "ParameterKey": "Param2",
     "UsePreviousValue": true
   }
 ]
@@ -55,43 +59,9 @@ This is what the `output/params/my-stack.json` file looks like:
 
 ## More Help
 
-
-<pre>
+```
 $ bin/lono-params help
-Commands:
-  lono-params generate NAME   # generate parameter json file for NAME
-  lono-params help [COMMAND]  # Describe available commands or one specific command
-
-Options:
-  [--verbose], [--no-verbose]    
-  [--noop], [--no-noop]          
-  [--project-root=PROJECT_ROOT]  # project root to use
-                                 # Default: .
-
-$ lono-params help generate
-/Users/tung/src/gitresolve/infra/lono/vendor/gems/lono-params/bin
-Usage:
-  lono-params generate NAME
-
-Options:
-  [--use-previous-value], [--no-use-previous-value]  
-                                                     # Default: true
-  [--verbose], [--no-verbose]                        
-  [--noop], [--no-noop]                              
-  [--project-root=PROJECT_ROOT]                      # project root to use
-                                                     # Default: .
-
-Description:
-  Example:
-
-  To generate a CloudFormation json file from params/my-stack.txt
-
-  $ lono-params generate my-stack
-
-  This will output a CloudFormation json file in output/params/my-stack.json
-$ 
-</pre>
-
+```
 ## Contributing
 
 1. Fork it
