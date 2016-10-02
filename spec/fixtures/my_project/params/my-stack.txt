@@ -1,4 +1,4 @@
 # comments are fine
 Param1=1
 Param2=2 # comments can go after the line too
-Param2=use_previous_value # treated specially
+Param3=use_previous_value # treated specially
