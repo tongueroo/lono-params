@@ -63,8 +63,10 @@ module LonoParams
                     ParameterValue: value
                   }
                 end
-        param = param.to_snake_keys if casing == :underscore
-        params << param
+        if param
+          param = param.to_snake_keys if casing == :underscore
+          params << param
+        end
       end
       params
     end
