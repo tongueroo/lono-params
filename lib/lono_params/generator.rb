@@ -57,7 +57,7 @@ module LonoParams
                     ParameterKey: key,
                     UsePreviousValue: true
                   }
-                else
+                elsif value
                   {
                     ParameterKey: key,
                     ParameterValue: value
