@@ -1,5 +1,7 @@
 # Lono Params
 
+[![CircleCI](https://circleci.com/gh/tongueroo/lono-params.svg?style=svg)](https://circleci.com/gh/tongueroo/lono-params)
+
 Tool to generate a CloudFormation params json formatted file from a simple env file.
 
 Given:
