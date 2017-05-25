@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.0.6]
+
+-  add internal mute option
+
 ## [0.0.5] do not generate param if the value is not set
 
 - do not generate param if the value is not set
