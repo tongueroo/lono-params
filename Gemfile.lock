@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lono-params (0.0.5)
+    lono-params (0.0.6)
       colorize
       hashie
       plissken
@@ -54,7 +54,7 @@ GEM
       ruby_dep (~> 1.2)
     lumberjack (1.0.10)
     method_source (0.8.2)
-    minitest (5.10.1)
+    minitest (5.10.2)
     nenv (0.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
