@@ -11,7 +11,6 @@ Param1=1
 # comments are fine
 Param2=2 # comments can go after the line too
 Param3=use_previous_value # treated specially
-$
 ```
 
 This is produced:
