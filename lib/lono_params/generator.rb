@@ -20,7 +20,7 @@ module LonoParams
         data = convert_to_cfn_format(contents)
         json = JSON.pretty_generate(data)
         write_output(json)
-        puts "Params file generated for #{@name} at #{output_path}"
+        puts "Params file generated for #{@name} at #{output_path}" unless @options[:mute]
       else
         puts "#{@source_path} could not be found?  Are you sure it exist?"
         exit 1
