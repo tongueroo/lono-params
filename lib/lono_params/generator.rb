@@ -1,7 +1,3 @@
-require "json"
-require "fileutils"
-require 'plissken' # Hash#to_snake_keys
-
 module LonoParams
   class Generator
     def initialize(name, options)
@@ -72,10 +68,11 @@ module LonoParams
     end
 
     def output_path
-      "#{@project_root}/output/params/#{@name}.json".sub!(/\.\//,'')
+      "#{@project_root}/output/params/#{@name}.json".sub(/\.\//,'')
     end
 
     def write_output(json)
+      puts "output_path #{output_path.inspect}"
       dir = File.dirname(output_path)
       FileUtils.mkdir_p(dir) unless File.exist?(dir)
       IO.write(output_path, json)
