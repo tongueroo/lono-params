@@ -72,7 +72,7 @@ module LonoParams
     end
 
     def output_path
-      path = "#{@project_root}/output/params/#{@name}.json"
+      "#{@project_root}/output/params/#{@name}.json".sub!(/\.\//,'')
     end
 
     def write_output(json)
