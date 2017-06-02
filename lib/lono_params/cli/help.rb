@@ -1,5 +1,5 @@
 module LonoParams
-  class CLI < Thor
+  class CLI < Command
     class Help
       class << self
         def generate

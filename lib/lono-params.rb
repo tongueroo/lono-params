@@ -6,6 +6,7 @@ require "fileutils"
 require 'plissken' # Hash#to_snake_keys
 
 module LonoParams
+  autoload :CLI, 'lono_params/command'
   autoload :CLI, 'lono_params/cli'
   autoload :Generator, 'lono_params/generator'
 end
