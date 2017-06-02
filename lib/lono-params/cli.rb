@@ -1,6 +1,6 @@
 require 'thor'
-require 'lono_params/command'
-require 'lono_params/cli/help'
+require 'lono-params/command'
+require 'lono-params/cli/help'
 
 module LonoParams
 
