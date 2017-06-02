@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    lono-params (1.0.0)
+    lono-params (1.0.1)
       colorize
       hashie
       json
