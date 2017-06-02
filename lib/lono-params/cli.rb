@@ -7,6 +7,7 @@ module LonoParams
   class CLI < Command
     class_option :verbose, type: :boolean
     class_option :noop, type: :boolean
+    class_option :mute, type: :boolean
     class_option :project_root, desc: "project root to use", default: '.'
 
     desc "generate NAME", "generate parameter json file for NAME"

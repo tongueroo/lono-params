@@ -72,7 +72,6 @@ module LonoParams
     end
 
     def write_output(json)
-      puts "output_path #{output_path.inspect}"
       dir = File.dirname(output_path)
       FileUtils.mkdir_p(dir) unless File.exist?(dir)
       IO.write(output_path, json)
