@@ -1,9 +1,10 @@
 require 'thor'
+require 'lono_params/command'
 require 'lono_params/cli/help'
 
 module LonoParams
 
-  class CLI < Thor
+  class CLI < Command
     class_option :verbose, type: :boolean
     class_option :noop, type: :boolean
     class_option :project_root, desc: "project root to use", default: '.'
