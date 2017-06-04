@@ -8,7 +8,7 @@ module LonoParams
     end
 
     def generate
-      # useful option for lono-cfn
+      # useful option for lono cfn
       return if @options[:allow_no_file] && !File.exist?(@source_path)
 
       if File.exist?(@source_path)
@@ -25,7 +25,7 @@ module LonoParams
 
     # useful for when calling CloudFormation via the aws-sdk gem
     def params
-      # useful option for lono-cfn
+      # useful option for lono cfn
       return {} if @options[:allow_no_file] && !File.exist?(@source_path)
 
       contents = IO.read(@source_path)
